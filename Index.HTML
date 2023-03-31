@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <link rel="stylesheet" href="lib/bootstrap.min.css"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Luizão</title>
+    <style>
+        *{
+            margin: 0;
+            font-family: 'Franklin Gothic Medium';
+        }
+
+        html, body{
+            height: 100%;
+        }
+
+        #container{
+            height: 100%;
+            width: 100%;
+            background-color: whitesmoke;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        header{
+            width: 100%;
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        header #logo{
+            height: 60px;
+        }
+
+        header #header_content{
+            height: 100%;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            /* background: lightcoral; */
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        header #info_container{
+            flex: 1;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        header #info_container > div{
+            width: 370px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        header #info_container #user{
+            width: 13px;
+           
+        }
+
+        header #info_container #truck{
+            width: 16px;
+            
+        }
+
+        header #search_container{
+            flex: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            padding: 10px 0;
+        }
+
+        header #search_container input{
+            flex: 6;
+            height: 20px;
+        }
+
+        header #search_container #cart_container{
+            flex: 4;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+
+        header #search_container #cart_container #cart{
+            height: 100%;
+            width: 80px;
+            background: gray;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 5px 0;
+            box-sizing: border-box;
+        }
+
+        header #search_container #cart_container #cart img{
+            width: 20px;
+        }
+
+        section {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            padding: 0px 10px;
+        }
+
+        #neck #quick_find{
+            padding: 10px;
+            gap: 20px;           
+            background-color: rgb(223, 205, 205);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex: 1;              
+        }
+
+        #neck #quick_find #multiple_input{
+            display: flex;
+            gap: 5px;
+        }
+
+        #neck #quick_find #multiple_input input{
+            flex: 1;
+        }
+
+        #neck #quick_find #button_search{
+            color: white;
+            background-color: gray;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 0;
+        }
+
+        #neck #quick_find #button_search img{
+            height: 15px;
+        }
+
+        #neck #carrossel{
+            display: flex;
+            flex: 4;
+            background-image: url("https://secure-static.vans.com.br/medias/sys_master/vans/vans/h23/h6a/h00/h00/11300028252190/sk8hiReconstruct-hero.jpg");
+            background-size: cover;
+            position: relative;
+        }
+
+        #neck #carrossel #leftarrow{
+           left: 0;
+        }
+
+        #neck #carrossel #leftarrow svg{
+            width: 15px;
+        }
+
+        #neck #carrossel #rightarrow{
+            right: 0;     
+        }
+
+        #neck #carrossel #rightarrow svg{
+            width: 15px;
+        }
+        
+        .arrow {
+            position: absolute;
+            background-color: grey;
+            height: 30px;
+            width: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .product{
+            display: flex;
+            /* width: 200px; */
+            flex-direction: column;
+            border: 1px solid;
+            padding: 15px;
+            gap: 10px;
+            box-sizing: border-box;
+        }
+
+        #content{
+            gap: 60px;
+        }
+
+        #product_grid{
+            flex: 70;
+            font-size: 13px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 300px 300px 300px;
+            gap: 40px;
+        }
+
+        #content #product_grid .product .tenis{
+            height: 70%;
+            object-fit: cover;
+        }
+
+        #corner{
+            display: flex;
+            flex-direction: column;
+            flex: 30;
+        }
+
+        #corner #most {
+            gap: 15px;
+            display: flex;
+           flex-direction: column;
+           border: 1px solid;
+           padding: 20px 10px ;
+        }
+
+        #corner #most .miniproduct{
+            gap: 15px;
+            display: flex;
+            font-size: 13px;
+            border-bottom: 2px;
+        }
+
+        #corner #most .tenis{
+            width: 100px;
+            object-fit: cover;       
+        }
+
+        #see_more{
+            color: white;
+            background-color: gray;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <header>
+            <img id="logo" src="https://www.vans.com.br/images/vans/logo.svg" alt="Logo_Vans">
+            <div id="header_content">
+                <div id="info_container">
+                    <p>Welcome Guest!</p>
+                    <div>
+                        <a href="#">Sign In</a>
+                        |
+                        <a href="#">Register</a>
+                        |
+                        <img id="user" src="myaccount.svg" alt="conta">
+                        <a href="#">My account</a>
+                        |
+                        <img id="truck" src="truck.svg" alt="truck">
+                        <a href="#">Track order</a>
+                    </div>
+                </div>
+                <div id="search_container">
+                    <input type="text">
+                    <div id="cart_container">
+                        <div>
+                            <p>Entregas em até | 30 Dias</p>
+                        <p>Serviço ao Cliente <b>1800 00 11 22</b></p>
+                        </div>
+                        <div id="cart">
+                            <img src="cart.svg" alt="Cart">
+                            <p>My cart</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <section id="neck">
+            <div id="quick_find">
+                <p><b>Quick Find - Choose Product</b></p>
+                <p>Find the right product at the right price</p>
+                <select><option value="Type">Tipo</option> </select>
+                <select><option value="Type">Vans</option> </select>
+                <select><option value="Type">Categoria</option> </select>
+                <div id="multiple_input">
+                    $ <input placeholder="De" style="width: 40%;"> $ <input placeholder="Até" style="width: 40%;">
+                </div>
+                    <button id="button_search"><img src="search.svg" alt="search">Busca</button>
+            </div>
+            <div id="carrossel">
+                <div id="rightarrow" class="arrow">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" fill="#ffffff"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg>
+                </div>
+                <div id="leftarrow" class="arrow">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" fill="#ffffff"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg>
+                </div>
+            </div>
+        </section>
+        <section id="content">
+            <div id="product_grid">
+                <div class="product">
+                    <img class="tenis" src="https://secure-static.vans.com.br/medias/sys_master/vans/vans/ha2/h13/h00/h00/11122196906014/1002000560079U-01-BASEIMAGE-Hires.jpg" alt="product">
+                    <a href="#">TÊNIS CLASSIC SLIP-ON REFLECTIVE FLAME BLACK</a>
+                    <img class="rating" src="" alt="rating">
+                    <p>R$ 499,99</p>
+                </div>
+                <div class="product">
+                    <img class="tenis" src="https://secure-static.vans.com.br/medias/sys_master/vans/vans/ha2/h13/h00/h00/11122196906014/1002000560079U-01-BASEIMAGE-Hires.jpg" alt="product">
+                    <a href="#">TÊNIS CLASSIC SLIP-ON REFLECTIVE FLAME BLACK</a>
+                    <img class="rating" src="" alt="rating">
+                    <p>R$ 499,99</p>
+                </div>
+                <div class="product">
+                    <img class="tenis" src="https://secure-static.vans.com.br/medias/sys_master/vans/vans/ha2/h13/h00/h00/11122196906014/1002000560079U-01-BASEIMAGE-Hires.jpg" alt="product">
+                    <a href="#">TÊNIS CLASSIC SLIP-ON REFLECTIVE FLAME BLACK</a>
+                    <img class="rating" src="" alt="rating">
+                    <p>R$ 499,99</p>
+                </div>
+                <div class="product">
+                    <img class="tenis" src="https://secure-static.vans.com.br/medias/sys_master/vans/vans/ha2/h13/h00/h00/11122196906014/1002000560079U-01-BASEIMAGE-Hires.jpg" alt="product">
+                    <a href="#">TÊNIS CLASSIC SLIP-ON REFLECTIVE FLAME BLACK</a>
+                    <img class="rating" src="" alt="rating">
+                    <p>R$ 499,99</p>
+                </div>
+                <div class="product">
+                    <img class="tenis" src="https://secure-static.vans.com.br/medias/sys_master/vans/vans/ha2/h13/h00/h00/11122196906014/1002000560079U-01-BASEIMAGE-Hires.jpg" alt="product">
+                    <a href="#">TÊNIS CLASSIC SLIP-ON REFLECTIVE FLAME BLACK</a>
+                    <img class="rating" src="" alt="rating">
+                    <p>R$ 499,99</p>
+                </div>
+                <div class="product">
+                    <img class="tenis" src="https://secure-static.vans.com.br/medias/sys_master/vans/vans/ha2/h13/h00/h00/11122196906014/1002000560079U-01-BASEIMAGE-Hires.jpg" alt="product">
+                    <a href="#">TÊNIS CLASSIC SLIP-ON REFLECTIVE FLAME BLACK</a>
+                    <img class="rating" src="" alt="rating">
+                    <p>R$ 499,99</p>
+                </div>
+                <div class="product">
+                    <img class="tenis" src="https://secure-static.vans.com.br/medias/sys_master/vans/vans/ha2/h13/h00/h00/11122196906014/1002000560079U-01-BASEIMAGE-Hires.jpg" alt="product">
+                    <a href="#">TÊNIS CLASSIC SLIP-ON REFLECTIVE FLAME BLACK</a>
+                    <img class="rating" src="" alt="rating">
+                    <p>R$ 499,99</p>
+                </div>
+                <div class="product">
+                    <img class="tenis" src="https://secure-static.vans.com.br/medias/sys_master/vans/vans/ha2/h13/h00/h00/11122196906014/1002000560079U-01-BASEIMAGE-Hires.jpg" alt="product">
+                    <a href="#">TÊNIS CLASSIC SLIP-ON REFLECTIVE FLAME BLACK</a>
+                    <img class="rating" src="" alt="rating">
+                    <p>R$ 499,99</p>
+                </div>
+                <div class="product">
+                    <img class="tenis" src="https://secure-static.vans.com.br/medias/sys_master/vans/vans/ha2/h13/h00/h00/11122196906014/1002000560079U-01-BASEIMAGE-Hires.jpg" alt="product">
+                    <a href="#">TÊNIS CLASSIC SLIP-ON REFLECTIVE FLAME BLACK</a>
+                    <img class="rating" src="" alt="rating">
+                    <p>R$ 499,99</p>
+                </div>
+            </div>
+            <div id="corner">
+                <div id="most">
+                    <p><b>Most Reviewed Items</b></p>
+                    <div class="miniproduct">
+                        <img class="tenis" src="https://secure-static.vans.com.br/medias/sys_master/vans/vans/ha2/h13/h00/h00/11122196906014/1002000560079U-01-BASEIMAGE-Hires.jpg" alt="product">
+                        <div style="display: flex; flex-direction: column; justify-content: space-between;" >
+                            <a href="#">TÊNIS CLASSIC SLIP-ON REFLECTIVE FLAME BLACK</a>
+                            <img class="rating" src="" alt="rating">
+                            <p>R$ 499,99</p>
+                        </div>
+                    </div>
+                    <div class="miniproduct">
+                        <img class="tenis" src="https://secure-static.vans.com.br/medias/sys_master/vans/vans/ha2/h13/h00/h00/11122196906014/1002000560079U-01-BASEIMAGE-Hires.jpg" alt="product">
+                        <div style="display: flex; flex-direction: column; justify-content: space-between;" >
+                            <a href="#">TÊNIS CLASSIC SLIP-ON REFLECTIVE FLAME BLACK</a>
+                            <img class="rating" src="" alt="rating">
+                            <p>R$ 499,99</p>
+                        </div>
+                    </div>
+                    <div class="miniproduct">
+                        <img class="tenis" src="https://secure-static.vans.com.br/medias/sys_master/vans/vans/ha2/h13/h00/h00/11122196906014/1002000560079U-01-BASEIMAGE-Hires.jpg" alt="product">
+                        <div style="display: flex; flex-direction: column; justify-content: space-between;" >
+                            <a href="#">TÊNIS CLASSIC SLIP-ON REFLECTIVE FLAME BLACK</a>
+                            <img class="rating" src="" alt="rating">
+                            <p>R$ 499,99</p>
+                        </div>
+                    </div>
+                    <div class="miniproduct">
+                        <img class="tenis" src="https://secure-static.vans.com.br/medias/sys_master/vans/vans/ha2/h13/h00/h00/11122196906014/1002000560079U-01-BASEIMAGE-Hires.jpg" alt="product">
+                        <div style="display: flex; flex-direction: column; justify-content: space-between;" >
+                            <a href="#">TÊNIS CLASSIC SLIP-ON REFLECTIVE FLAME BLACK</a>
+                            <img class="rating" src="" alt="rating">
+                            <p>R$ 499,99</p>
+                        </div>
+                    </div>
+                    <div class="miniproduct">
+                        <img class="tenis" src="https://secure-static.vans.com.br/medias/sys_master/vans/vans/ha2/h13/h00/h00/11122196906014/1002000560079U-01-BASEIMAGE-Hires.jpg" alt="product">
+                        <div style="display: flex; flex-direction: column; justify-content: space-between;" >
+                            <a href="#">TÊNIS CLASSIC SLIP-ON REFLECTIVE FLAME BLACK</a>
+                            <img class="rating" src="" alt="rating">
+                            <p>R$ 499,99</p>
+                        </div>
+                    </div>
+                    <button id="see_more">Ver Mais</button>
+                </div>
+                <div id="news">
+                    
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
